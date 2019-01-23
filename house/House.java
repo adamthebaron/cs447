@@ -84,19 +84,21 @@ class CvHouse extends Canvas
 			2 * Math.round(maxy / 3) + 100
 		};
 		g.fillPolygon(xpoints, ypoints, 6);
-		// create tree branches
+		// create tree leaves
 		g.setColor(new Color(28, 147, 11));
-
-		for(int i = 0; i < 7; i++)
-		{
-
-		}
+		g.fillOval(maxx - Math.round(maxx / 4), 2 * Math.round(maxy / 3) - 350, 100, 100);
+		g.fillOval(maxx - Math.round(maxx / 4) - 50, 2 * Math.round(maxy / 3) - 350, 100, 100);
+		g.fillOval(maxx - Math.round(maxx / 4), 2 * Math.round(maxy / 3) - 325, 100, 100);
+		g.fillOval(maxx - Math.round(maxx / 4) - 50, 2 * Math.round(maxy / 3) - 325, 100, 100);
+		g.fillOval(maxx - Math.round(maxx / 4), 2 * Math.round(maxy / 3) - 300, 100, 100);
+		g.fillOval(maxx - Math.round(maxx / 4) - 75, 2 * Math.round(maxy / 3) - 325, 100, 100);
+		g.fillOval(maxx - Math.round(maxx / 4) + 10, 2 * Math.round(maxy / 3) - 300, 100, 100);
 		// create door, windows, and, chimney
-		g.setColor(Color.black);
-		g.fillRect(Math.round(maxx / 2) - 75, 2 * Math.round(maxy / 3), 50, 100);
+		g.setColor(new Color(40, 26, 13));
+		g.fillRect(Math.round(maxx / 2) - 100, 2 * Math.round(maxy / 3) - 50, 100, 150);
 		g.setColor(Color.white);
-		g.fillRect(Math.round(maxx / 2) - 200, Math.round(maxy / 3) + 50, 50, 50);
-		g.fillRect(Math.round(maxx / 2) + 50, Math.round(maxy / 3) + 50, 50, 50);
+		g.fillRect(Math.round(maxx / 2) - 200, Math.round(maxy / 3) + 100, 75, 75);
+		g.fillRect(Math.round(maxx / 2) + 25, Math.round(maxy / 3) + 100, 75, 75);
 		// create sun
 	}
 }
