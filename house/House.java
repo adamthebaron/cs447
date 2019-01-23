@@ -93,12 +93,14 @@ class CvHouse extends Canvas
 		g.fillOval(maxx - Math.round(maxx / 4), 2 * Math.round(maxy / 3) - 300, 100, 100);
 		g.fillOval(maxx - Math.round(maxx / 4) - 75, 2 * Math.round(maxy / 3) - 325, 100, 100);
 		g.fillOval(maxx - Math.round(maxx / 4) + 10, 2 * Math.round(maxy / 3) - 300, 100, 100);
-		// create door, windows, and, chimney
+		// create door and windows
 		g.setColor(new Color(40, 26, 13));
 		g.fillRect(Math.round(maxx / 2) - 100, 2 * Math.round(maxy / 3) - 50, 100, 150);
 		g.setColor(Color.white);
 		g.fillRect(Math.round(maxx / 2) - 200, Math.round(maxy / 3) + 100, 75, 75);
 		g.fillRect(Math.round(maxx / 2) + 25, Math.round(maxy / 3) + 100, 75, 75);
 		// create sun
+		g.setColor(Color.yellow);
+		g.fillOval(minx - 50, miny - 50, 200, 200);
 	}
 }
