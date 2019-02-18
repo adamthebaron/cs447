@@ -21,7 +21,7 @@ class BarGraph extends Frame
 				System.exit(0);
 			}
 		});
-		setSize(1024, 1024);
+		setSize(1000, 1000);
 		add("Center", new CvBarGraph());
 		setVisible(true);
 	}
@@ -51,8 +51,13 @@ class CvBarGraph extends Canvas
 		gr = rand.nextInt(255);
 		b = rand.nextInt(255);
 		Color c = new Color(r, gr, b);
+		// draw rectangle
 		g.setColor(c);
-		g.fillRect((minx + 50) * offset * 10, maxy - 20 - (barObj.getValue() * 100), 100, barObj.getValue() * 100);
+		g.fillRect((minx + 20) + (offset + 1) * 10, maxy - 20 - (barObj.getValue() * 100), 100, barObj.getValue() * 100);
+		// add to legend
+		g.fillRect(minx + 30, miny + 30 * (offset + 1), 10, 10);
+		g.setColor(Color.BLACK);
+		g.drawString(barObj.getName(), minx + 30, miny + 30 * (offset + 1));
 		return;
 	}
 
@@ -90,7 +95,7 @@ class CvBarGraph extends Canvas
 		{
 			g.drawLine(minx + 20, maxy - 20 - i, minx + 15, maxy - 20 - i);
 			g.setColor(Color.BLACK);
-			g.drawString(Integer.toString(Math.round(i / 10)), minx, maxy - 20 - i);
+			g.drawString(Integer.toString(Math.round(i / 100)), minx, maxy - 20 - i);
 		}
 		// draw rectangles
 		for(int i = 0; i < barObjs.size(); i++)
