@@ -53,7 +53,7 @@ class CvBarGraph extends Canvas
 		Color c = new Color(r, gr, b);
 		// draw rectangle
 		g.setColor(c);
-		g.fillRect((minx + 20) + (offset + 1) * 10, maxy - 20 - (barObj.getValue() * 100), 100, barObj.getValue() * 100);
+		g.fillRect((minx + 20) + (offset + 1) * 150, maxy - 20 - (barObj.getValue() * 100), 100, barObj.getValue() * 100);
 		// add to legend
 		g.fillRect(minx + 30, miny + 30 * (offset + 1), 10, 10);
 		g.setColor(Color.BLACK);
