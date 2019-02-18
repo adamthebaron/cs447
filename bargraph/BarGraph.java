@@ -68,6 +68,7 @@ class CvBarGraph extends Canvas
 		maxy = d.height - 1;
 		minx = 1;
 		miny = 1;
+
 		// read input from file
 		try(BufferedReader br = new BufferedReader(new FileReader("input.txt")))
 		{

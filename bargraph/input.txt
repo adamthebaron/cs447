@@ -1,3 +1,5 @@
 computers 5
 records 3
 ciders 7
+cats 2
+chairs 8
