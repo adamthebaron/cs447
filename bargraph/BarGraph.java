@@ -32,6 +32,10 @@ class CvBarGraph extends Canvas
 	private static final long serialVersionUID = 1L;
 	ArrayList<BarObj> barObjs;
 	int barObjsNum;
+	int minx;
+	int miny;
+	int maxx;
+	int maxy;
 
 	CvBarGraph()
 	{
@@ -39,7 +43,7 @@ class CvBarGraph extends Canvas
 		barObjs = new ArrayList<BarObj>();
 	}
 
-	public void drawRectangle(Graphics g, int height)
+	public void drawRectangle(Graphics g, BarObj barObj, int offset)
 	{
 		Random rand = new Random();
 		int r, gr, b;
@@ -48,16 +52,17 @@ class CvBarGraph extends Canvas
 		b = rand.nextInt(255);
 		Color c = new Color(r, gr, b);
 		g.setColor(c);
+		g.fillRect((minx + 50) * offset * 10, maxy - 20 - (barObj.getValue() * 100), 100, barObj.getValue() * 100);
 		return;
 	}
 
 	public void paint(Graphics g)
 	{
 		Dimension d = getSize();
-		int maxx = d.width - 1;
-		int maxy = d.height - 1;
-		int minx = 1;
-		int miny = 1;
+		maxx = d.width - 1;
+		maxy = d.height - 1;
+		minx = 1;
+		miny = 1;
 		// read input from file
 		try(BufferedReader br = new BufferedReader(new FileReader("input.txt")))
 		{
@@ -80,7 +85,6 @@ class CvBarGraph extends Canvas
 		// draw x and y axes
 		g.drawLine(minx + 20, miny + 20, minx + 20, maxy - 20);
 		g.drawLine(minx + 20, maxy - 20, maxx - 10, maxy - 20);
-
 		// draw a hashmark every 100 pixels
 		for(int i = 0; i <= maxy; i += 100)
 		{
@@ -89,6 +93,9 @@ class CvBarGraph extends Canvas
 			g.drawString(Integer.toString(Math.round(i / 10)), minx, maxy - 20 - i);
 		}
 		// draw rectangles
-
+		for(int i = 0; i < barObjs.size(); i++)
+		{
+			drawRectangle(g, barObjs.get(i), i);
+		}
 	}
 }
