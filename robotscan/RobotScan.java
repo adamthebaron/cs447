@@ -44,11 +44,14 @@ class CvRobotScan extends Canvas
 	int numSensors;
 	float angleDiff;
 	Polygon poly;
+	int curx;
+	int cury;
 
 	CvRobotScan()
 	{
 		super();
 		getInput();
+		curx = cury = 0;
 	}
 
 	private void getInput()
@@ -95,6 +98,8 @@ class CvRobotScan extends Canvas
 		minx = 1;
 		miny = 1;
 
+		curx = robotpos[0];
+		cury = robotpos[1];
 		Graphics2D g2 = (Graphics2D) g;
 		// draw closed polygon
 		poly = new Polygon(xcoords, ycoords, n);
@@ -103,9 +108,12 @@ class CvRobotScan extends Canvas
 		//draw robot
 		g2.drawRect(robotpos[0], robotpos[1], 10, 10);
 		// draw scanlines
-		for(int i = 0; i < numSensors; i++)
+		while(poly.contains(curx, cury))
 		{
-			
+			curx += 1;
 		}
+		curx -= 1;
+		System.out.println("boundary is at " + curx + " " + cury);
+		g2.drawLine(robotpos[0], robotpos[1], curx, cury);
 	}
 }
