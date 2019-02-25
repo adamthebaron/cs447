@@ -55,6 +55,16 @@ class CvRobotScan extends Canvas
 	{
 		super();
 		getInput();
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				robotpos[0] = e.getX();
+				robotpos[1] = e.getY();
+				System.out.println("mouse at " + robotpos[0] + " " + robotpos[1]);
+				repaint();
+			}
+		});
 		curx = cury = 0;
 	}
 
