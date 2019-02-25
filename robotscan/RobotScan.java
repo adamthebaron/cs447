@@ -121,9 +121,12 @@ class CvRobotScan extends Canvas
 		g2.drawRect(robotpos[0], robotpos[1], 10, 10);
 		increment = 0f;
 		// draw scanlines
-		for(int i = 1; i < numSensors; i++)
+		for(int i = 0; i < numSensors; i++)
 		{
-			angles[i] = angles[i - 1] + angleDiff;
+			if(i == 0)
+				angles[i] = angleDiff;
+			else
+				angles[i] = angles[i - 1] + angleDiff;
 			System.out.println("( " + i + ") angle is at " + angles[i]);
 			curx = robotpos[0] + 5;
 			cury = robotpos[1] + 5;
