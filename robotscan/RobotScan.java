@@ -56,6 +56,17 @@ class CvRobotScan extends Canvas
 		curx = cury = 0;
 	}
 
+	/**
+	 * this program takes an input file of the form
+	 * (number of points in polygon
+	 * x0, y0
+	 * x1, y1
+	 * ...
+	 * xn, yn
+	 * point of robot
+	 * angle of robot
+	 * number of rays
+	 */
 	private void getInput()
 	{
 		try(BufferedReader br = new BufferedReader(new FileReader("input.txt")))
@@ -119,15 +130,13 @@ class CvRobotScan extends Canvas
 			while(poly.contains(curx, cury))
 			{
 				increment += 0.001f;
-				curx += increment;
-				cury += increment;
+				curx += angleDiff * Math.cos(angleDiff * i);
+				cury += angleDiff * Math.sin(angleDiff * i);
 			}
-			curx -= increment;
-			cury -= increment;
-			curx += Math.cos(angleDiff);
-			cury += Math.sin(angleDiff);
-			System.out.println("boundary is at " + curx + " " + cury);
-			g2.drawLine(robotpos[0], robotpos[1], (int) curx, (int) cury);
+			curx -= angleDiff * Math.cos(angleDiff * i);
+			cury -= angleDiff * Math.sin(angleDiff * i);
+			System.out.println("boundary is at " + Math.round(curx) + " " + Math.round(cury));
+			g2.drawLine(robotpos[0] + 5, robotpos[1] + 5, Math.round(curx), Math.round(cury));
 		}
 	}
 }
