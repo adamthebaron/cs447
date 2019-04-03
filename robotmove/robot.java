@@ -19,7 +19,7 @@ public class robot extends Frame
 	robot(){
 		super("Robot Animation");
 		int bodyX =500, bodyY = 500;
-		int robotMiddleX = bodyX + 200 / 2;
+		int robotMiddleX = bodyX + 100;
 		int robotMiddleY = 250;
 		body = new Rectangle(bodyX, bodyY, 200, 300);
 		arm = new Rectangle(robotMiddleX - 25, robotMiddleY, 50, 400);
@@ -73,7 +73,7 @@ public class robot extends Frame
 		// draw initial polygons
 		g.drawLine(0, 800, 1500, 800);
 		g.drawRect((int) body.getX(), (int) body.getY(), (int) body.getWidth(), (int) body.getHeight());
-		g.drawRect((int) arm.getX(), (int) body.getY(), (int) body.getWidth(), (int) body.getHeight());
+		g.drawRect((int) arm.getX(), (int) arm.getY(), (int) arm.getWidth(), (int) arm.getHeight());
    		g.drawRect((int) box.getX(), (int) box.getY(), (int) box.getWidth(), (int) box.getHeight());
 	} 
 }
