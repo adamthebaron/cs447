@@ -16,6 +16,7 @@ public class robot extends Frame
          {public void windowClosing(WindowEvent e){System.exit(0);}});
 		setSize(1500, 1000);
 		show();
+		addKeyListener(new RobotKeyListener());
 	}
 	
 	
