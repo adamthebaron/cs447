@@ -51,18 +51,20 @@ public class robot extends Frame
         	switch(e.getKeyCode())
         	{
             	case KeyEvent.VK_RIGHT:
-					if(body.getX() < 1495)
+					if(body.getX() + body.getWidth() < box.getX())
 					{
 						body.translate(5, 0);
 						arm1.translate(5, 0);
+						arm2.translate(5, 0);
 					}
 					t.SetCurrentMove(Move_T.BODY);
 					break;
 	            case KeyEvent.VK_LEFT:
-					if(body.getX() > 5)
+					if(body.getX() > 0)
 					{
 						body.translate(-5, 0);
 						arm1.translate(-5, 0);
+						arm2.translate(-5, 0);
 					}
 					t.SetCurrentMove(Move_T.BODY);
                     break;
@@ -80,7 +82,10 @@ public class robot extends Frame
 					}
 					t.SetCurrentMove(Move_T.ARM);
                     break;
-            }
+			}
+			System.out.println("checking box collision");
+			if(checkBoxCollision())
+				System.out.println("arm is hitting box");
 			repaint();
         }
 
@@ -92,6 +97,11 @@ public class robot extends Frame
 	
 		});
 	}
+
+	public Boolean checkBoxCollision()
+	{
+		return box.intersects(arm2);
+	}
 	
 	
 	public void paint(Graphics g) 
@@ -102,10 +112,11 @@ public class robot extends Frame
 		g.drawRect((int) body.getX(), (int) body.getY(), (int) body.getWidth(), (int) body.getHeight());
 		// draw arm
 		Graphics2D g2 = (Graphics2D) g;
-		AffineTransform oldtransform = g2.getTransform();
-		g2.rotate(Math.toRadians(theta), body.getX() + body.getWidth() / 2, body.getY());
-		g.drawRect((int) arm1.getX(), (int) arm1.getY(), (int) arm1.getWidth(), (int) arm1.getHeight());
-		g.drawRect((int) arm2.getX(), (int) arm2.getY(), (int) arm2.getWidth(), (int) arm2.getHeight());
+			AffineTransform oldtransform = g2.getTransform();
+			g2.rotate(Math.toRadians(theta), body.getX() + body.getWidth() / 2, body.getY());
+			g.drawRect((int) arm1.getX(), (int) arm1.getY(), (int) arm1.getWidth(), (int) arm1.getHeight());
+			g.drawRect((int) arm2.getX(), (int) arm2.getY(), (int) arm2.getWidth(), (int) arm2.getHeight());
+			//if(arm2.getX() > )
 		g2.setTransform(oldtransform);
 		// draw box
 		g.drawRect((int) box.getX(), (int) box.getY(), (int) box.getWidth(), (int) box.getHeight());

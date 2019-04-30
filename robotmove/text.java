@@ -39,7 +39,7 @@ public class text
 
 	public String GetString()
 	{
-		fullStr = "action: " + currentMove + " t1: " + theta1 + " t2: " + theta2;
+		fullStr = "action: " + currentMove;
 		return fullStr;
 	}
 }
